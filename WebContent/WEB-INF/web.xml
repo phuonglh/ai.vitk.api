@@ -34,7 +34,7 @@
     </init-param>
     <init-param>
       <param-name>swagger.api.basepath</param-name>
-      <param-value>http://localhost:8080/vitk/rest</param-value>
+      <param-value>http://mim.hus.vnu.edu.vn:8080/vitk/rest</param-value>
     </init-param>
     <load-on-startup>2</load-on-startup>
   </servlet>
