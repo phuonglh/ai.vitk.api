@@ -7,6 +7,12 @@
 	<packaging>war</packaging>
 	<name>vitk</name>
 	<description>Vitk Web Service</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
@@ -45,23 +51,39 @@
 		</dependency>
 		<dependency>
 			<groupId>ai.vitk</groupId>
-			<artifactId>ai.vitk.core</artifactId>
+			<artifactId>ai.vitk.common</artifactId>
 			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/WebContent/WEB-INF/lib/ai.vitk.core-1.0.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>ai.vitk</groupId>
+			<artifactId>ai.vitk.tok</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>ai.vitk</groupId>
+			<artifactId>ai.vitk.seq</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>ai.vitk</groupId>
+			<artifactId>ai.vitk.sao</artifactId>
+			<version>1.0</version>
 		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5.1</version>
+				<version>3.6.1</version>
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+					<compilerArgument>-proc:none</compilerArgument>
 				</configuration>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.0.0</version>
 				<configuration>

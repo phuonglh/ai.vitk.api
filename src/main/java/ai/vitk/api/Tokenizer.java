@@ -26,14 +26,14 @@ import io.swagger.annotations.ApiParam;
  *
  */
 @Path("/tok")
-@Api(value = "/tok")
+@Api(value = "tok")
 public class Tokenizer {
 	ai.vitk.tok.Tokenizer tokenizer = new ai.vitk.tok.Tokenizer();
 	Gson gson = new Gson();
 	
 	@GET
 	@Path("/execute")
-	@ApiOperation(value = "Tokenization Service")
+	@ApiOperation(value = "Vietnamese word segmentation")
 	@Consumes(MediaType.TEXT_PLAIN)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response execute(@ApiParam(value = "text", required = true) @QueryParam("text") String text) {
