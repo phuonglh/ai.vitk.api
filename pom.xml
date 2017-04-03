@@ -51,17 +51,7 @@
 		</dependency>
 		<dependency>
 			<groupId>ai.vitk</groupId>
-			<artifactId>ai.vitk.common</artifactId>
-			<version>1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>ai.vitk</groupId>
 			<artifactId>ai.vitk.tok</artifactId>
-			<version>1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>ai.vitk</groupId>
-			<artifactId>ai.vitk.seq</artifactId>
 			<version>1.0</version>
 		</dependency>
 		<dependency>
