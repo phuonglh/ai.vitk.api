@@ -1,11 +1,10 @@
 package ai.vitk.api;
 
 import ai.vitk.sao.AttributeClassifier;
-import ai.vitk.type.Token;
-import com.google.gson.Gson;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.commons.lang3.tuple.Pair;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -31,8 +30,8 @@ public class Attributor {
 	@Consumes(MediaType.TEXT_PLAIN)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response execute(@ApiParam(value = "text", required = true) @QueryParam("text") String text) {
-		String attribute = classifier.decode(text);
-		Response response = Response.status(200).entity(attribute).type(MediaType.APPLICATION_JSON).build();
+		List<Pair<String, Double>> attributes = classifier.decode(text);
+		Response response = Response.status(200).entity(attributes).type(MediaType.APPLICATION_JSON).build();
 		return response;
 	}
 }

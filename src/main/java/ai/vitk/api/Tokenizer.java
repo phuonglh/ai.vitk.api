@@ -33,7 +33,7 @@ public class Tokenizer {
 	
 	@GET
 	@Path("/execute")
-	@ApiOperation(value = "Vietnamese word segmentation")
+	@ApiOperation(value = "Vietnamese Word Segmentation")
 	@Consumes(MediaType.TEXT_PLAIN)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response execute(@ApiParam(value = "text", required = true) @QueryParam("text") String text) {
