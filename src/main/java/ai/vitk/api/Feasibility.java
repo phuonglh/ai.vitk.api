@@ -34,13 +34,13 @@ public class Feasibility {
 	@Consumes(MediaType.TEXT_PLAIN)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response execute(@ApiParam(value = "text", required = true) @QueryParam("text") String text,
-                          @ApiParam(value = "type", required = true) @QueryParam("type") String type) {
+                          @ApiParam(value = "type", allowableValues = "ORG, LOC", required = true, defaultValue = "ORG") @QueryParam("type") String type) {
     List<Pair<String, Double>> result = new LinkedList<>();
 	  switch (type) {
-      case "org":
+      case "ORG":
         result = orgFeasibility.predict(type, text);
         break;
-      case "loc":
+      case "LOC":
         result = locFeasibility.predict(type, text);
         break;
     }

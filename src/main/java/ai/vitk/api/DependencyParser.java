@@ -26,7 +26,7 @@ import java.util.List;
 @Path("/dep")
 @Api(value = "dep")
 public class DependencyParser {
-	TransitionBasedParser parser = new TransitionBasedParser(Language.VIETNAMESE, FeatureFrame.WORD);
+	TransitionBasedParser parser = new TransitionBasedParser(Language.VIETNAMESE, FeatureFrame.POS_WORD);
 	Gson gson = new Gson();
 	
 	@GET
