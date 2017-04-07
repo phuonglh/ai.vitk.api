@@ -10,6 +10,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -26,6 +27,21 @@ public class Attributor {
   private AttributeClassifier classifier = new AttributeClassifier(false);
   private Gson gson = new Gson();
 	
+  class Output {
+    private String attribute;
+    private double probability;
+
+    Output(String attribute, double probability) {
+      this.attribute = attribute;
+      this.probability = probability;
+    }
+
+    @Override
+    public String toString() {
+      return "[" + attribute + ", " + probability + "]";
+    }
+  }
+  
 	@GET
 	@Path("/execute")
 	@ApiOperation(value = "English Personal Attribute Detection")
@@ -33,7 +49,9 @@ public class Attributor {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response execute(@ApiParam(value = "text", required = true) @QueryParam("text") String text) {
     List<Pair<String, Double>> attributes = classifier.decode(text);
-		String json = gson.toJson(attributes.toArray(new Pair[attributes.size()]));
+    List<Output> outputs = new LinkedList<>();
+    attributes.forEach(e -> outputs.add(new Output(e.getLeft(), e.getRight())));
+		String json = gson.toJson(outputs.toArray(new Output[outputs.size()]));
 		Response response = Response.status(200).entity(json).type(MediaType.APPLICATION_JSON).build();
 		return response;
 	}
