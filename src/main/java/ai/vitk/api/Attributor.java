@@ -1,6 +1,7 @@
 package ai.vitk.api;
 
 import ai.vitk.sao.AttributeClassifier;
+import com.google.gson.Gson;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -22,7 +23,8 @@ import java.util.List;
 @Path("/att")
 @Api(value = "att")
 public class Attributor {
-	AttributeClassifier classifier = new AttributeClassifier(false);
+  private AttributeClassifier classifier = new AttributeClassifier(false);
+  private Gson gson = new Gson();
 	
 	@GET
 	@Path("/execute")
@@ -30,8 +32,9 @@ public class Attributor {
 	@Consumes(MediaType.TEXT_PLAIN)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response execute(@ApiParam(value = "text", required = true) @QueryParam("text") String text) {
-		List<Pair<String, Double>> attributes = classifier.decode(text);
-		Response response = Response.status(200).entity(attributes).type(MediaType.APPLICATION_JSON).build();
+    List<Pair<String, Double>> attributes = classifier.decode(text);
+		String json = gson.toJson(attributes.toArray(new Pair[attributes.size()]));
+		Response response = Response.status(200).entity(json).type(MediaType.APPLICATION_JSON).build();
 		return response;
 	}
 }

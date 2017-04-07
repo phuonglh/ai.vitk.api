@@ -1,6 +1,7 @@
 package ai.vitk.api;
 
 import ai.vitk.aof.AttributeType;
+import com.google.gson.Gson;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -23,12 +24,10 @@ import java.util.List;
 @Path("/aof")
 @Api(value = "aof")
 public class Feasibility {
-	ai.vitk.aof.Feasibility femaleFeasibility = new ai.vitk.aof.Feasibility(AttributeType.FEMALE);
-	ai.vitk.aof.Feasibility maleFeasibility = new ai.vitk.aof.Feasibility(AttributeType.MALE);
 	ai.vitk.aof.Feasibility orgFeasibility = new ai.vitk.aof.Feasibility(AttributeType.ORGANIZATION);
 	ai.vitk.aof.Feasibility locFeasibility = new ai.vitk.aof.Feasibility(AttributeType.LOCATION);
-	ai.vitk.aof.Feasibility accFeasibility = new ai.vitk.aof.Feasibility(AttributeType.ACCOUNT);
-	
+  Gson gson = new Gson();
+  
 	@GET
 	@Path("/execute")
 	@ApiOperation(value = "Attribute/Object Feasibility")
@@ -38,23 +37,15 @@ public class Feasibility {
                           @ApiParam(value = "type", required = true) @QueryParam("type") String type) {
     List<Pair<String, Double>> result = new LinkedList<>();
 	  switch (type) {
-      case "female":
-       result = femaleFeasibility.predict(type, text);
-       break;
-      case "male":
-        result = maleFeasibility.predict(type, text);
-        break;
       case "org":
         result = orgFeasibility.predict(type, text);
         break;
       case "loc":
         result = locFeasibility.predict(type, text);
         break;
-      case "acc":
-        result = accFeasibility.predict(type, text);
-        break;
     }
-		Response response = Response.status(200).entity(result).type(MediaType.APPLICATION_JSON).build();
+    String json = gson.toJson(result.toArray(new Pair[result.size()]));
+		Response response = Response.status(200).entity(json).type(MediaType.APPLICATION_JSON).build();
 		return response;
 	}
 }
