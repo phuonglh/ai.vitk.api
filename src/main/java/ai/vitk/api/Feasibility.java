@@ -38,10 +38,10 @@ public class Feasibility {
     List<Pair<String, Double>> result = new LinkedList<>();
 	  switch (type) {
       case "ORG":
-        result = orgFeasibility.predict(type, text);
+        result = orgFeasibility.predict(type.toLowerCase(), text);
         break;
       case "LOC":
-        result = locFeasibility.predict(type, text);
+        result = locFeasibility.predict(type.toLowerCase(), text);
         break;
     }
     String json = gson.toJson(result.toArray(new Pair[result.size()]));
