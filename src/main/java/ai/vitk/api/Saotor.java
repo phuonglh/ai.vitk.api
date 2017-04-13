@@ -21,7 +21,7 @@ import javax.ws.rs.core.Response;
 @Path("/sao")
 @Api(value = "sao")
 public class Saotor {
-  private ai.vitk.sao.Saotor saotor =new ai.vitk.sao.Saotor(false, 20);
+  private ai.vitk.sao.Saotor saotor =new ai.vitk.sao.Saotor(20, false);
   private Gson gson = new Gson();
 	
 	@GET

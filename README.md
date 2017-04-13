@@ -2,7 +2,7 @@
 
 This repository hosts Vitk web services. The end points will be updated from time to time.
 
-The web services are available at [Vitk demo site](http://http://118.70.176.240:8080/vitk). 
+The web services are available at [Vitk demo site](http://118.70.176.240:8080/vitk). 
 
 ### Support or Contact
 
