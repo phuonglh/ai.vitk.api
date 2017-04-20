@@ -88,6 +88,7 @@
 		<profile>
 			<id>shade</id>
 			<build>
+				<finalName>vitk</finalName>
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -111,8 +112,7 @@
 						<version>3.0.0</version>
 						<configuration>
 							<warSourceDirectory>WebContent</warSourceDirectory>
-							<packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes>
-							<packagingIncludes>WEB-INF/lib/ai.vitk.*.jar</packagingIncludes>
+							<packagingExcludes>%regex[WEB-INF/lib/(?!ai.vitk).*.jar]</packagingExcludes>
 						</configuration>
 					</plugin>
 				</plugins>
