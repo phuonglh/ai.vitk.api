@@ -1,6 +1,8 @@
 package ai.vitk.api;
 
 import ai.vitk.sao.AttributeClassifier;
+import ai.vitk.util.Mode;
+import ai.vitk.util.ModelParameters;
 import com.google.gson.Gson;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -24,9 +26,15 @@ import java.util.List;
 @Path("/att")
 @Api(value = "att")
 public class Attributor {
-  private AttributeClassifier classifier = new AttributeClassifier(false);
+  private AttributeClassifier classifier;
   private Gson gson = new Gson();
 	
+  public Attributor() {
+    ModelParameters parameters = new ModelParameters();
+    parameters.setClassifierType("mlp");
+    classifier = new AttributeClassifier(Mode.TEST, parameters);
+  }
+  
   class Output {
     private String attribute;
     private double probability;
