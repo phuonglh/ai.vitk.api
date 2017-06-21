@@ -23,15 +23,28 @@ public class Maotor {
   private ai.vitk.sao.Maotor maotor = new ai.vitk.sao.Maotor();
   private Gson gson = new Gson();
 	
-	@POST
-	@Path("/execute")
-	@ApiOperation(value = "English Multiple SAO Extractor")
+	@GET
+	@Path("/get")
+	@ApiOperation(value = "English Multiple SAO Extractor -- GET")
 	@Consumes(MediaType.TEXT_PLAIN)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response execute(@ApiParam(value = "text", required = true) @QueryParam("text") String text) {
+	public Response get(@ApiParam(value = "text", required = true) @QueryParam("text") String text) {
     List<SAO> sao = maotor.decode(text);
 		String json = gson.toJson(sao);
 		Response response = Response.status(200).entity(json).type(MediaType.APPLICATION_JSON).build();
 		return response;
 	}
+	
+	@POST
+	@Path("/post")
+	@ApiOperation(value = "English Multiple SAO Extractor -- POST")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response post(@ApiParam(value = "text", required = true) @QueryParam("text") String text) {
+		List<SAO> sao = maotor.decode(text);
+		String json = gson.toJson(sao);
+		Response response = Response.status(200).entity(json).type(MediaType.APPLICATION_JSON).build();
+		return response;
+	}
+
 }

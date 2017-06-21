@@ -32,15 +32,28 @@ public class Saotor {
     saotor = new ai.vitk.sao.Saotor(Mode.TEST, parameters);    
   }
   
-	@POST
-	@Path("/execute")
-	@ApiOperation(value = "English Single SAO Extractor")
+	@GET
+	@Path("/get")
+	@ApiOperation(value = "English Single SAO Extractor -- GET")
 	@Consumes(MediaType.TEXT_PLAIN)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response execute(@ApiParam(value = "text", required = true) @QueryParam("text") String text) {
+	public Response get(@ApiParam(value = "text", required = true) @QueryParam("text") String text) {
     SAO sao = saotor.decode(text);
 		String json = gson.toJson(sao);
 		Response response = Response.status(200).entity(json).type(MediaType.APPLICATION_JSON).build();
 		return response;
 	}
+
+  @POST
+  @Path("/post")
+  @ApiOperation(value = "English Single SAO Extractor")
+  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+  @Produces(MediaType.APPLICATION_JSON)
+  public Response post(@ApiParam(value = "text", required = true) @QueryParam("text") String text) {
+    SAO sao = saotor.decode(text);
+    String json = gson.toJson(sao);
+    Response response = Response.status(200).entity(json).type(MediaType.APPLICATION_JSON).build();
+    return response;
+  }
+	
 }
