@@ -56,7 +56,17 @@
 		</dependency>
 		<dependency>
 			<groupId>ai.vitk</groupId>
-			<artifactId>ai.vitk.sao</artifactId>
+			<artifactId>ai.vitk.dep</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>ai.vitk</groupId>
+			<artifactId>ai.vitk.aof</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>ai.vitk</groupId>
+			<artifactId>ai.vitk.sim</artifactId>
 			<version>1.0</version>
 		</dependency>
 		<dependency>
