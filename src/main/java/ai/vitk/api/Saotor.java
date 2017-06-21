@@ -47,7 +47,7 @@ public class Saotor {
   @POST
   @Path("/post")
   @ApiOperation(value = "English Single SAO Extractor")
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+  @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
   public Response post(@ApiParam(value = "text", required = true) @QueryParam("text") String text) {
     SAO sao = saotor.decode(text);
