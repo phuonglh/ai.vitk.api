@@ -46,5 +46,4 @@ public class Maotor {
 		Response response = Response.status(200).entity(json).type(MediaType.APPLICATION_JSON).build();
 		return response;
 	}
-
 }
