@@ -23,9 +23,9 @@ public class Maotor {
   private ai.vitk.sao.Maotor maotor = new ai.vitk.sao.Maotor();
   private Gson gson = new Gson();
 	
-	@GET
+	@POST
 	@Path("/execute")
-	@ApiOperation(value = "English SAO Extractor")
+	@ApiOperation(value = "English Multiple SAO Extractor")
 	@Consumes(MediaType.TEXT_PLAIN)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response execute(@ApiParam(value = "text", required = true) @QueryParam("text") String text) {

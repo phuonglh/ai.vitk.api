@@ -32,9 +32,9 @@ public class Saotor {
     saotor = new ai.vitk.sao.Saotor(Mode.TEST, parameters);    
   }
   
-	@GET
+	@POST
 	@Path("/execute")
-	@ApiOperation(value = "English SAO Extractor")
+	@ApiOperation(value = "English Single SAO Extractor")
 	@Consumes(MediaType.TEXT_PLAIN)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response execute(@ApiParam(value = "text", required = true) @QueryParam("text") String text) {
