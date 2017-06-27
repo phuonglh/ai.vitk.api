@@ -1,6 +1,7 @@
 package ai.vitk.api;
 
 import ai.vitk.aof.AttributeType;
+import ai.vitk.type.FeatureType;
 import com.google.gson.Gson;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -26,9 +27,14 @@ import java.util.List;
 @Singleton
 @Api(value = "aof")
 public class Feasibility {
-	ai.vitk.aof.Feasibility orgFeasibility = new ai.vitk.aof.Feasibility(AttributeType.ORGANIZATION);
-	ai.vitk.aof.Feasibility locFeasibility = new ai.vitk.aof.Feasibility(AttributeType.LOCATION);
-  Gson gson = new Gson();
+	private ai.vitk.aof.Feasibility orgFeasibility;
+	private ai.vitk.aof.Feasibility locFeasibility;
+  private Gson gson = new Gson();
+  
+  public Feasibility() {
+    orgFeasibility = new ai.vitk.aof.Feasibility(AttributeType.ORGANIZATION);
+    locFeasibility = new ai.vitk.aof.Feasibility(AttributeType.LOCATION);
+  }
   
 	@GET
 	@Path("/execute")

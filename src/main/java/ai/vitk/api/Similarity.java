@@ -26,9 +26,14 @@ import java.util.List;
 @Singleton
 @Api(value = "sim")
 public class Similarity {
-	ai.vitk.sim.Similarity englishSimilarity = new ai.vitk.sim.DefaultSimilarity(Language.ENGLISH);
-	ai.vitk.sim.Similarity vietnameseSimilarity = new ai.vitk.sim.DefaultSimilarity(Language.VIETNAMESE);
-  Gson gson = new Gson();
+	private ai.vitk.sim.Similarity englishSimilarity;
+	private ai.vitk.sim.Similarity vietnameseSimilarity;
+  private Gson gson = new Gson();
+  
+  public Similarity() {
+    englishSimilarity = new ai.vitk.sim.DefaultSimilarity(Language.ENGLISH);
+    vietnameseSimilarity = new ai.vitk.sim.DefaultSimilarity(Language.VIETNAMESE);
+  }
   
 	@GET
 	@Path("/generate")

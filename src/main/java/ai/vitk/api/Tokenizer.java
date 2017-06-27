@@ -30,8 +30,12 @@ import io.swagger.annotations.ApiParam;
 @Singleton
 @Api(value = "tok")
 public class Tokenizer {
-	ai.vitk.tok.Tokenizer tokenizer = new ai.vitk.tok.Tokenizer();
-	Gson gson = new Gson();
+	private ai.vitk.tok.Tokenizer tokenizer;
+	private Gson gson = new Gson();
+	
+	public Tokenizer() {
+    tokenizer = new ai.vitk.tok.Tokenizer();
+  }
 	
 	@GET
 	@Path("/execute")

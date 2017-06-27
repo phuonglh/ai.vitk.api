@@ -28,9 +28,13 @@ import java.io.IOException;
 @Singleton
 @Api(value = "tag")
 public class Tagger {
-	ModelParameters parameters = new ModelParameters();
-	POS pos = new POS(Mode.TEST, parameters);
-	Gson gson = new Gson();
+	private ModelParameters parameters = new ModelParameters();
+	private POS pos;
+	private Gson gson = new Gson();
+	
+	public Tagger() {
+	   pos = new POS(Mode.TEST, parameters);
+  }
 	
 	@GET
 	@Path("/execute")

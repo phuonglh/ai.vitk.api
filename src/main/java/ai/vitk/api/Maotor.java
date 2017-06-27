@@ -22,9 +22,13 @@ import java.util.List;
 @Singleton
 @Api(value = "mao")
 public class Maotor {
-  private ai.vitk.sao.Maotor maotor = new ai.vitk.sao.Maotor();
+  private ai.vitk.sao.Maotor maotor;
   private Gson gson = new Gson();
 	
+  public Maotor() {
+    maotor = new ai.vitk.sao.Maotor();
+  }
+  
 	@GET
 	@Path("/get")
 	@ApiOperation(value = "English Multiple SAO Extractor -- GET")

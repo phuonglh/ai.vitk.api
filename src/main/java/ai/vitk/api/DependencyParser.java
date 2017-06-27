@@ -30,9 +30,13 @@ import java.util.List;
 @Singleton
 @Api(value = "dep")
 public class DependencyParser {
-	ModelParameters parameters = new ModelParameters();
-	TransitionBasedParser parser = new TransitionBasedParser(Mode.TEST, parameters, FeatureFrame.POS_WORD);
-	Gson gson = new Gson();
+	private ModelParameters parameters = new ModelParameters();
+	private TransitionBasedParser parser;
+	private Gson gson = new Gson();
+	
+	public DependencyParser() {
+	  parser = new TransitionBasedParser(Mode.TEST, parameters, FeatureFrame.POS_WORD);
+  }
 	
 	@GET
 	@Path("/execute")
