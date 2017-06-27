@@ -10,6 +10,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
+import javax.inject.Singleton;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -24,6 +25,7 @@ import java.io.IOException;
  *
  */
 @Path("/tag")
+@Singleton
 @Api(value = "tag")
 public class Tagger {
 	ModelParameters parameters = new ModelParameters();

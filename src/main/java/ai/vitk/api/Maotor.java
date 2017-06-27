@@ -6,6 +6,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
+import javax.inject.Singleton;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -18,6 +19,7 @@ import java.util.List;
  *
  */
 @Path("/mao")
+@Singleton
 @Api(value = "mao")
 public class Maotor {
   private ai.vitk.sao.Maotor maotor = new ai.vitk.sao.Maotor();

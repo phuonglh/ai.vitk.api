@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.apache.commons.lang3.tuple.Pair;
 
+import javax.inject.Singleton;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -24,6 +25,7 @@ import java.util.List;
  *
  */
 @Path("/att")
+@Singleton
 @Api(value = "att")
 public class Attributor {
   private AttributeClassifier classifier;

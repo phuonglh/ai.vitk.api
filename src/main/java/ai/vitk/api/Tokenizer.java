@@ -2,6 +2,7 @@ package ai.vitk.api;
 
 import java.util.List;
 
+import javax.inject.Singleton;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -26,6 +27,7 @@ import io.swagger.annotations.ApiParam;
  *
  */
 @Path("/tok")
+@Singleton
 @Api(value = "tok")
 public class Tokenizer {
 	ai.vitk.tok.Tokenizer tokenizer = new ai.vitk.tok.Tokenizer();

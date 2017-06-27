@@ -7,6 +7,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
+import javax.inject.Singleton;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -22,6 +23,7 @@ import java.util.List;
  *
  */
 @Path("/sim")
+@Singleton
 @Api(value = "sim")
 public class Similarity {
 	ai.vitk.sim.Similarity englishSimilarity = new ai.vitk.sim.DefaultSimilarity(Language.ENGLISH);
